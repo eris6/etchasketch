@@ -3,6 +3,17 @@ const resize = document.querySelector(".resize");
 const clear = document.querySelector(".clear");
 let dimension = 16;
 
+container.addEventListener('click', (event)=>{
+    let target = event.target;
+
+    switch(target){
+        case 'resize':
+            console.log('hidshfjdisafhjkas');
+        
+    }
+})
+
+
 resize.addEventListener('click', ()=>{
     let newSize = prompt("What size?");
     while(container.firstChild){
@@ -11,7 +22,6 @@ resize.addEventListener('click', ()=>{
     if (newSize == 0){
         createGrid(1);
     }
-
 
     if (newSize > 0 && newSize < 100){
         createGrid(newSize);
@@ -32,9 +42,6 @@ clear.addEventListener('click', ()=>{
     createGrid(dimension);
 
 })
-
-
-
 
 
 function createGrid(dimension){
