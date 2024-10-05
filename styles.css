@@ -17,7 +17,4 @@ body{
 .box{
    border:1px solid black;
    display:flex;
-   width: 48px;
-   height: 48px;
-   padding: 0;
 }
