@@ -1,5 +1,6 @@
 const container = document.querySelector(".container");
 const resize = document.querySelector(".resize");
+const clear = document.querySelector(".clear");
 let dimension = 16;
 
 resize.addEventListener('click', ()=>{
@@ -7,7 +8,12 @@ resize.addEventListener('click', ()=>{
     while(container.firstChild){
         container.removeChild(container.lastChild);
     }
-    if (newSize < 100){
+    if (newSize == 0){
+        createGrid(1);
+    }
+
+
+    if (newSize > 0 && newSize < 100){
         createGrid(newSize);
         dimension = newSize;
     }
@@ -17,6 +23,18 @@ resize.addEventListener('click', ()=>{
 
     }
 })
+
+clear.addEventListener('click', ()=>{
+    while(container.firstChild){
+        container.removeChild(container.lastChild);
+    }
+
+    createGrid(dimension);
+
+})
+
+
+
 
 
 function createGrid(dimension){
@@ -89,23 +107,13 @@ function getRandomColor(){
     return randomColor;
 }
 
-function opacify(rgb){
-    let value = rgb(10, rgb.length);
-    console.log(value);
-    
-    rgb = rgb.slice(0, 10) + " / 10%" + ")";
-    // console.log(rgb);
-    return rgb;
-
-
-}
-
 
 function getBoxSize(dimension){
     return 800/dimension - 2;
 }
 
-
 createGrid(dimension);
+
+
 
 
