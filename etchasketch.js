@@ -1,6 +1,24 @@
+const container = document.querySelector(".container");
+const resize = document.querySelector(".resize");
+resize.addEventListener('click', ()=>{
+    let newSize = prompt("What size?");
+    while(container.firstChild){
+        container.removeChild(container.lastChild);
+    }
+    if (newSize > 100){
+        createGrid(100);
+    }
+    else{
+        
+        createGrid(newSize);
+    }
+})
+
+
+
 function createGrid(dimension){
     boxSize = getBoxSize(dimension);
-    const container = document.querySelector(".container");
+
     for (let i =0; i < dimension; i++){
         const row = document.createElement("div");
         container.appendChild(row);
@@ -9,7 +27,6 @@ function createGrid(dimension){
             const box = document.createElement("div");
             box.style.height=boxSize + "px";
             box.style.width=boxSize + "px";
-            box.style.padding="0";
             row.appendChild(box);
             
             box.classList.add("box");
@@ -25,6 +42,6 @@ function getBoxSize(dimension){
 }
 
 
-createGrid(16);
+createGrid(15);
 
 
