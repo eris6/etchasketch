@@ -1,48 +1,34 @@
 const container = document.querySelector(".container");
 const resize = document.querySelector(".resize");
 const clear = document.querySelector(".clear");
+const playerbuttons = document.querySelector(".playerbuttons");
 let dimension = 16;
 
-container.addEventListener('click', (event)=>{
+playerbuttons.addEventListener('click', (event) => {
     let target = event.target;
-
-    switch(target){
-        case 'resize':
-            console.log('hidshfjdisafhjkas');
-        
+    if (target.id == 'resizebutton'){
+        let newSize = prompt("What size?");
+        while (container.firstChild) {
+            container.removeChild(container.lastChild);
+        }
+        if (newSize == 0) {
+            createGrid(1);
+        } else if (newSize > 0 && newSize < 100) {
+            createGrid(newSize);
+            dimension = newSize;
+        } else {
+            createGrid(100);
+            dimension = 100;
+        }
     }
-})
-
-
-resize.addEventListener('click', ()=>{
-    let newSize = prompt("What size?");
-    while(container.firstChild){
-        container.removeChild(container.lastChild);
-    }
-    if (newSize == 0){
-        createGrid(1);
-    }
-
-    if (newSize > 0 && newSize < 100){
-        createGrid(newSize);
-        dimension = newSize;
-    }
-    else{
-        createGrid(100);
-        dimension = 100;
+    else if (target.id == 'clearbutton'){
+        while (container.firstChild) {
+            container.removeChild(container.lastChild);
+        }
+        createGrid(dimension);
 
     }
 })
-
-clear.addEventListener('click', ()=>{
-    while(container.firstChild){
-        container.removeChild(container.lastChild);
-    }
-
-    createGrid(dimension);
-
-})
-
 
 function createGrid(dimension){
     boxSize = getBoxSize(dimension);
